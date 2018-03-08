@@ -1,0 +1,236 @@
+<html>
+<head>
+    <title>{Title}</title>
+    <link rel="shortcut icon" href="{Favicon}">
+    <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    {block:Description}
+        <meta name="description" content="{MetaDescription}" />
+    {/block:Description}
+
+<!-- DEFAULT COLORS -->
+        <meta name="color:Background" content="#ffffff"/>
+        <meta name="color:Text" content="#000000"/>
+        <meta name="color:Video Corner Fold" content="red">
+        <meta name="font:Font" content="'Montserrat'">
+        <meta name="if:Show Captions" content="0"/>
+        <meta name="if:Uppercase Links" content="0">
+        <meta name="if:Fade On Hover" content="0">
+        <meta name="if:Show Tags on Index Page" content="0">
+
+<style type="text/css">
+body {
+background-color:{color:Background};
+font-family:{font:Font};
+color:{color:Text};
+font-size:15px;
+line-height:25px;
+}
+a {
+padding-bottom:2px;
+color:{color:Text};
+text-decoration:none;
+}
+img {
+border: none;
+border : 0;
+outline:none;
+}
+a img {
+outline: none;
+}
+iframe#tumblr_controls {
+display:none;
+}
+#wrapper {
+{block:PermalinkPage}
+width:580px;
+{/block:PermalinkPage}
+position:relative;
+margin: 50px auto;
+}
+.post {
+padding:20px;
+}
+.post img {
+width:100%;
+}
+.post img:hover {
+{block:IndexPage}
+{block:IfFadeOnHover}
+opacity:0.5;
+{/block:IfFadeOnHover}
+{/block:IndexPage}
+}
+.post embed, #post iframe {
+width:100% !important;
+}
+.post .photoset a:first-child {
+display:block !important;
+border:0 !important;
+padding:0 !important;
+}
+.post .photoset a {
+display:none;
+}
+.title {
+width:100%;
+text-align:center;
+margin:auto;
+position:fixed;
+top:20px;
+z-index:5000;
+}
+
+.fadeIn {
+  animation-name: fdIn;
+  animation-duration: 900ms;
+  animation-fill-mode: both;
+  animation-timing-function: ease;
+}
+
+@keyframes fdIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#infscr-loading {
+display:none !important;
+}
+
+</style>
+
+
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/4.2.1/masonry.pkgd.min.js"></script>
+
+</head>
+
+<body>
+
+{block:IfUppercaseLinks}<div style="text-transform:uppercase">{/block:IfUppercaseLinks}
+
+{block:IfUppercaseLinks}</div>{/block:IfUppercaseLinks}
+
+<div id="wrapper">
+
+{block:Posts}
+<div class="post"
+{block:IndexPage}
+{block:Post1}style="width:380px"{/block:Post1}
+{block:Post2}style="width:410px"{/block:Post2}
+{block:Post3}style="width:500px"{/block:Post3}
+{block:Post4}style="width:290px"{/block:Post4}
+{block:Post5}style="width:320px"{/block:Post5}
+{block:Post6}style="width:460px"{/block:Post6}
+{block:Post7}style="width:530px"{/block:Post7}
+{block:Post8}style="width:280px"{/block:Post8}
+{block:Post9}style="width:340px"{/block:Post9}
+{block:Post10}style="width:400px"{/block:Post10}
+{block:Post11}style="width:260px"{/block:Post11}
+{block:Post12}style="width:370px"{/block:Post12}
+{block:Post13}style="width:520px"{/block:Post13}
+{block:Post14}style="width:310px"{/block:Post14}
+{block:Post15}style="width:250px" {/block:Post15}
+{/block:IndexPage}
+{block:PermalinkPage}style="width:500px"{/block:PermalinkPage}
+>
+
+
+{block:Text}
+{Body}
+{/block:Text}
+
+{block:Link}
+<a href="{URL}" class="link" {Target}>{Name}</a>
+{block:Description}<div class="description">{Description}</div>{/block:Description}
+{/block:Link}
+
+{block:Quote}
+<a style="border:0 !important" href="{Permalink}">"{Quote}"</a>
+{block:Source}
+<p>&mdash; {Source}</p>
+{/block:Source}
+{/block:Quote}
+
+{block:Photo}
+{block:IndexPage}<a href="{Permalink}"><div style="border:none"><img src="{PhotoURL-HighRes}"  alt="{PhotoAlt}" border="0"/></div></a>{/block:IndexPage}{block:PermalinkPage}{LinkOpenTag}<div style="border:none"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></div>{LinkCloseTag}{/block:PermalinkPage}
+{block:IndexPage}{block:IfShowCaptions}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:IfShowCaptions}{/block:IndexPage}
+{block:PermalinkPage}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:PermalinkPage}
+{/block:Photo}
+
+{block:Chat}
+{block:Title}<h2>{Title}</h2>{/block:Title}
+<ul class="chat">{block:Lines}<li class="user_{UserNumber}">{block:Label}<span class="label">{Label}</span>{/block:Label} {Line}</li>{/block:Lines}</ul>
+{/block:Chat}
+
+{block:Video}
+{block:IndexPage}<a href="{Permalink}"><div class="corner"></div></a>{/block:IndexPage}
+<div id="video">
+{Video-500}
+</div>
+{block:IndexPage}{block:IfShowCaptions}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:IfShowCaptions}{/block:IndexPage}
+{block:PermalinkPage}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:PermalinkPage}
+{/block:Video}
+
+{block:Photoset}
+{block:IndexPage}<div class="photoset">{block:Photos}<a href="{Permalink}"><img src="{PhotoURL-HighRes}"></a>{/block:Photos}</div>{/block:IndexPage}
+{block:PermalinkPage}{Photoset-500}{/block:PermalinkPage}
+{block:IndexPage}{block:IfShowCaptions}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:IfShowCaptions}{/block:IndexPage}
+{block:PermalinkPage}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:PermalinkPage}
+{/block:Photoset}
+
+{block:Audio}
+{block:AlbumArt}<a href="{Permalink}"><img src="{AlbumArtURL}"></a>{/block:AlbumArt}
+<div class="player">{AudioPlayerBlack}</div>
+{block:IndexPage}{block:IfShowCaptions}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:IfShowCaptions}{/block:IndexPage}
+{block:PermalinkPage}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:PermalinkPage}
+{/block:Audio}
+
+{block:IfShowTagsOnIndexPage}{block:IndexPage}{block:Date}Posted {TimeAgo} and has {NoteCountWithLabel}{block:HasTags}<br>{block:Tags}<a href="{TagURL}">#{Tag}</a> {/block:Tags}{/block:HasTags}{/block:Date}{/block:IndexPage}{/block:IfShowTagsOnIndexPage}{block:PermalinkPage}{block:Date}Posted {TimeAgo} and has {NoteCountWithLabel}{block:HasTags}<br>{block:Tags}<a href="{TagURL}">#{Tag}</a> {/block:Tags}{/block:HasTags}{/block:Date}{/block:PermalinkPage}
+
+</div>
+{/block:Posts}
+
+{block:NextPage}<div id="page-nav"><a href="{NextPage}"></a>{/block:NextPage}
+
+</div>
+
+<script>
+
+  var container = document.querySelector('#wrapper');
+  var posts = document.querySelectorAll('.post');
+
+  imagesLoaded( posts, function() {
+    var msnry = new Masonry( container, {
+      itemSelector: '.post',
+      columnWidth: 200
+    });
+
+  var infScroll = new InfiniteScroll( container, {
+    path: '#page-nav a',
+    append: '.post',
+    outlayer: msnry,
+    history: true
+  });
+
+  infScroll.on( 'append', function(response,path,items){
+
+    imagesLoaded( items, function() {
+        infScroll.appendItems(items);
+        items.forEach(function(item){
+          item.classList.add('fadeIn');
+        })
+      });
+  });
+
+});
+</script>
+
+
+</body>
+</html>
